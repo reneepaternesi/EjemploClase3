@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directivas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script defer src="./app.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <div>
+            Valor variable "dibujoPrimerParrafo": {{dibujoPrimerParrafo}}
+            <hr />
+            <div v-if="caso === 1">Esta es la descripcion del primer parrafo</div>
+            <div v-else-if="caso == 3">Esta es la descripcion del segundo parrafo</div>
+            <div v-else>Esta es la descripcion del tercer parrafo</div>
+            <hr />
+            <di v-show="dibujoPrimerParrafo">usando v-show</div>
+            <h1>Ejercicio 1</h1>
+            <button @click="onClick">{{btnLabel}}</button>
+            <p v-show="btnShow"> Este párrafo se oculta on demand</p>
+            <hr />
+            <h1>BUCLE</h1>
+ 
+                <ul  class="list-group">
+                    <li class="list-group-item" v-for="(item,i) in arreglo" :key="i">
+                        {{item.id}}) - {{item.descr}}
+                        <div v-for="(elemento, e) in item.subelem" :key="e">
+                            {{elemento}}
+                        </div>
+                    </li>
+                </ul>
+            <hr />
+            <div :class="cssClasses">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Why do we use it?
+                    
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    
+                </p>
+            </div>
+            <div :class="dibujoPrimerParrafo ? 'bg-warning' : 'text-secondary'">
+                CLASE CONDICIONAL
+            </div>
+            <p :style="estiloDesdeMetodo()">
+                INLINE STYLES
+            </p>
+            <hr />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Desc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(elem, j) in arreglo" :key="j"  :class="j % 2 === 0 ? 'tdStyle' : 'tdGray'">
+                        <td>
+                            {{elem.id}}
+                        </td>
+                        <td>
+                            {{elem.descr}}
+                        </td>
+                     </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
